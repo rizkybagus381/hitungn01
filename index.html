@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.6.4.1 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Laporan Pendapatan &amp; Pengeluaran&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        input {
+            width: 200px;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #report {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Pendapatan &amp; Pengeluaran&lt;/h1&gt;
+        &lt;p id=&quot;hari&quot;&gt;&lt;/p&gt;
+        &lt;p id=&quot;tanggal&quot;&gt;&lt;/p&gt;
+
+        &lt;form id=&quot;salesForm&quot;&gt;
+            &lt;h2&gt;Sales Real&lt;/h2&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;bca&quot;&gt;1. BCA:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;bca&quot; name=&quot;bca&quot;&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;ovo&quot;&gt;2. OVO:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;ovo&quot; name=&quot;ovo&quot;&gt; k - 0,7% = &lt;span id=&quot;ovoResult&quot;&gt;&lt;/span&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;grabfood&quot;&gt;3. GRABFOOD:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;grabfood&quot; name=&quot;grabfood&quot;&gt; k - 37% = &lt;span id=&quot;grabfoodResult&quot;&gt;&lt;/span&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;shopeefood&quot;&gt;4. SHOPEEFOOD:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;shopeefood&quot; name=&quot;shopeefood&quot;&gt; k - 22% = &lt;span id=&quot;shopeefoodResult&quot;&gt;&lt;/span&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;gofood&quot;&gt;5. GOFOOD:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;gofood&quot; name=&quot;gofood&quot;&gt; k - 20%, -1k = &lt;span id=&quot;gofoodResult&quot;&gt;&lt;/span&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;gobiz&quot;&gt;6. Gobiz:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;gobiz&quot; name=&quot;gobiz&quot;&gt; k - 0.7% = &lt;span id=&quot;gobizResult&quot;&gt;&lt;/span&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;uangKas&quot;&gt;7. Uang Kas:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uangKas&quot; name=&quot;uangKas&quot;&gt; k
+            &lt;/div&gt;
+
+            &lt;h2&gt;Pengeluaran&lt;/h2&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;pengeluaranUangKas&quot;&gt;Uang kas:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;pengeluaranUangKas&quot; name=&quot;pengeluaranUangKas&quot;&gt; k
+            &lt;/div&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;label for=&quot;sisaUangKas&quot;&gt;Sisa uang kas:&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;sisaUangKas&quot; name=&quot;sisaUangKas&quot;&gt; k
+            &lt;/div&gt;
+
+            &lt;div class=&quot;total&quot;&gt;Total Sales (Real) = &lt;span id=&quot;totalSalesReal&quot;&gt;&lt;/span&gt; k&lt;/div&gt;
+            &lt;div class=&quot;total&quot;&gt;Total Sales (Tablet) = &lt;span id=&quot;totalSalesTablet&quot;&gt;&lt;/span&gt; k&lt;/div&gt;
+
+            &lt;h2&gt;Terjual:&lt;/h2&gt;
+            &lt;textarea id=&quot;terjual&quot; rows=&quot;3&quot; cols=&quot;50&quot;&gt;&lt;/textarea&gt;
+
+            &lt;h2&gt;Kuota (Jumlah saat ini):&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Kentang: 3 bgks ✅&lt;/li&gt;
+                &lt;li&gt;Pop mie (semua jenis): 14 bgks ✅&lt;/li&gt;
+            &lt;/ul&gt;
+
+            &lt;button type=&quot;submit&quot;&gt;Hitung Total&lt;/button&gt;
+        &lt;/form&gt;
+
+        &lt;button id=&quot;generateReport&quot;&gt;Generate Laporan&lt;/button&gt;
+        &lt;div id=&quot;report&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Set current day and date
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const now = new Date();
+        document.getElementById('hari').textContent = `Hari: ${days[now.getDay()]}`;
+        document.getElementById('tanggal').textContent = `Tanggal: ${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+
+        // Function to format number with thousand separator and Rupiah
+        function formatRupiah(num) {
+            return num.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }).replace(/,00$/, '');
+        }
+
+        // Function to parse input value
+        function parseInput(value) {
+            return parseFloat(value.replace(/[^\d]/g, '')) || 0;
+        }
+
+        // Calculate results and total
+        document.getElementById('salesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const bca = parseInput(document.getElementById('bca').value);
+            const ovo = parseInput(document.getElementById('ovo').value);
+            const ovoResult = ovo * 0.993;
+            document.getElementById('ovoResult').textContent = formatRupiah(ovoResult);
+
+            const grabfood = parseInput(document.getElementById('grabfood').value);
+            const grabfoodResult = grabfood * 0.63;
+            document.getElementById('grabfoodResult').textContent = formatRupiah(grabfoodResult);
+
+            const shopeefood = parseInput(document.getElementById('shopeefood').value);
+            const shopeefoodResult = shopeefood * 0.78;
+            document.getElementById('shopeefoodResult').textContent = formatRupiah(shopeefoodResult);
+
+            const gofood = parseInput(document.getElementById('gofood').value);
+            const gofoodResult = gofood * 0.8 - 1000;
+            document.getElementById('gofoodResult').textContent = formatRupiah(gofoodResult);
+
+            const gobiz = parseInput(document.getElementById('gobiz').value);
+            const gobizResult = gobiz * 0.993;
+            document.getElementById('gobizResult').textContent = formatRupiah(gobizResult);
+
+            const uangKas = parseInput(document.getElementById('uangKas').value);
+
+            const totalSales = bca + ovoResult + grabfoodResult + shopeefoodResult + gofoodResult + gobizResult + uangKas;
+            document.getElementById('totalSalesReal').textContent = formatRupiah(totalSales);
+            document.getElementById('totalSalesTablet').textContent = formatRupiah(totalSales);
+        });
+
+        // Format input values on blur
+        const inputs = document.querySelectorAll('input[type=&quot;text&quot;]');
+        inputs.forEach(input =&gt; {
+            input.addEventListener('blur', function() {
+                this.value = formatRupiah(parseInput(this.value));
+            });
+        });
+
+        // Generate report
+        document.getElementById('generateReport').addEventListener('click', function() {
+            const hari = document.getElementById('hari').textContent;
+            const tanggal = document.getElementById('tanggal').textContent;
+            const bca = document.getElementById('bca').value;
+            const ovo = document.getElementById('ovo').value;
+            const ovoResult = document.getElementById('ovoResult').textContent;
+            const grabfood = document.getElementById('grabfood').value;
+            const grabfoodResult = document.getElementById('grabfoodResult').textContent;
+            const shopeefood = document.getElementById('shopeefood').value;
+            const shopeefoodResult = document.getElementById('shopeefoodResult').textContent;
+            const gofood = document.getElementById('gofood').value;
+            const gofoodResult = document.getElementById('gofoodResult').textContent;
+            const gobiz = document.getElementById('gobiz').value;
+            const gobizResult = document.getElementById('gobizResult').textContent;
+            const uangKas = document.getElementById('uangKas').value;
+            const pengeluaranUangKas = document.getElementById('pengeluaranUangKas').value;
+            const sisaUangKas = document.getElementById('sisaUangKas').value;
+            const totalSalesReal = document.getElementById('totalSalesReal').textContent;
+            const totalSalesTablet = document.getElementById('totalSalesTablet').textContent;
+            const terjual = document.getElementById('terjual').value;
+
+            const report = `
+Pendapatan &amp; Pengeluaran
+${hari}
+${tanggal}
+
+Sales Real
+
+1. BCA: ${bca}
+
+2. OVO: ${ovo} - 0,7% = ${ovoResult}
+
+3. GRABFOOD: ${grabfood} - 37% = ${grabfoodResult}
+
+4. SHOPEEFOOD: ${shopeefood} - 22% = ${shopeefoodResult}
+
+5. GOFOOD: ${gofood} - 20%, -1k = ${gofoodResult}
+
+6. Gobiz: ${gobiz} - 0.7% = ${gobizResult}
+
+7. Uang Kas: ${uangKas}
+
+Pengeluaran =
+Uang kas: ${pengeluaranUangKas}
+-
+
+Sisa uang kas: ${sisaUangKas}
+
+Total Sales (Real) = ${totalSalesReal}
+Total Sales (Tablet) = ${totalSalesTablet}
+
+Terjual:
+${terjual}
+
+Kuota (Jumlah saat ini):
+- Kentang: 3 bgks ✅
+- Pop mie (semua jenis): 14 bgks ✅
+            `;
+
+            document.getElementById('report').textContent = report;
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+</pre>
+</body>
+</html>
